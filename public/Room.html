@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Rooms</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .light-background {
+            background-color: #f8f9fa;
+        }
+        .room-item {
+            transition: transform 0.3s ease;
+        }
+        .room-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Rooms Section -->
+    <div class="container light-background">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title text-center text-dark text-uppercase">
+                    Our Rooms
+                </h6>
+                <h1 class="mb-5">
+                    Explore Our <span class="text-uppercase" style="color: #989549;">Rooms</span>
+                </h1>
+            </div>
+            <div class="row g-4">
+                <!-- Room 1 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="assets/img/room-1.jpg" alt="Junior Suite" />
+                            <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #989549;">
+                                $100/Night
+                            </small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">Junior Suite</h5>
+                                <div class="ps-2" style="color: #989549;">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3">
+                                    <i class="fa fa-bed me-2" style="color: #989549;"></i>3 Bed
+                                </small>
+                                <small class="border-end me-3 pe-3">
+                                    <i class="fa fa-bath me-2" style="color: #989549;"></i>2 Bath
+                                </small>
+                                <small>
+                                    <i class="fa fa-wifi me-2" style="color: #989549;"></i>Wifi
+                                </small>
+                            </div>
+                            <p class="text-body mb-3">
+                                Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-md rounded py-2 px-4" href="#" style="background-color: #989549;">
+                                    View Detail
+                                </a>
+                                <a class="btn btn-md btn-dark rounded py-2 px-4" href="#">
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="assets/img/room-2.jpg" alt="Executive Suite" />
+                            <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #989549;">
+                                $150/Night
+                            </small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">Executive Suite</h5>
+                                <div class="ps-2" style="color: #989549;">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3">
+                                    <i class="fa fa-bed me-2" style="color: #989549;"></i>4 Bed
+                                </small>
+                                <small class="border-end me-3 pe-3">
+                                    <i class="fa fa-bath me-2" style="color: #989549;"></i>3 Bath
+                                </small>
+                                <small>
+                                    <i class="fa fa-wifi me-2" style="color: #989549;"></i>Wifi
+                                </small>
+                            </div>
+                            <p class="text-body mb-3">
+                                Luxurious suite with spacious living area and modern amenities for a comfortable stay.
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-md rounded py-2 px-4" href="#" style="background-color: #989549;">
+                                    View Detail
+                                </a>
+                                <a class="btn btn-md btn-dark rounded py-2 px-4" href="#">
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="room-item shadow rounded overflow-hidden">
+                        <div class="position-relative">
+                            <img class="img-fluid" src="assets/img/room-3.jpg" alt="Deluxe Room" />
+                            <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #989549;">
+                                $120/Night
+                            </small>
+                        </div>
+                        <div class="p-4 mt-2">
+                            <div class="d-flex justify-content-between mb-3">
+                                <h5 class="mb-0">Deluxe Room</h5>
+                                <div class="ps-2" style="color: #989549;">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <small class="border-end me-3 pe-3">
+                                    <i class="fa fa-bed me-2" style="color: #989549;"></i>2 Bed
+                                </small>
+                                <small class="border-end me-3 pe-3">
+                                    <i class="fa fa-bath me-2" style="color: #989549;"></i>1 Bath
+                                </small>
+                                <small>
+                                    <i class="fa fa-wifi me-2" style="color: #989549;"></i>Wifi
+                                </small>
+                            </div>
+                            <p class="text-body mb-3">
+                                A cozy room with elegant decor and all the necessary amenities for a pleasant stay.
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <a class="btn btn-md rounded py-2 px-4" href="#" style="background-color: #989549;">
+                                    View Detail
+                                </a>
+                                <a class="btn btn-md btn-dark rounded py-2 px-4" href="#">
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

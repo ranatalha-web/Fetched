@@ -1,0 +1,203 @@
+/* General body styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+/* Shared container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Grid layout for listings in index.html */
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* Individual listing card in index.html */
+.listing-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+}
+
+.listing-card:hover {
+  transform: scale(1.05);
+}
+
+/* Listing card image in index.html */
+.listing-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: filter 0.3s ease;
+}
+
+.listing-card:hover .listing-image {
+  filter: blur(5px);
+}
+
+/* Button container on hover in index.html */
+.button-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  gap: 10px;
+}
+
+.listing-card:hover .button-container {
+  opacity: 1;
+}
+
+.view-details-btn, .book-now-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; 
+
+}
+
+.view-details-btn:hover, .book-now-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Error and loading messages in index.html */
+.loading,
+.error {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+}
+
+/* ========================= */
+/* Details Page Specific Styles */
+/* ========================= */
+
+/* Details container */
+.listing-detail {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+/* Detail image */
+.listing-detail img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Typography and labels in details.html */
+.detail-label {
+  font-weight: bold;
+  color: #333;
+  margin-right: 10px;
+}
+
+.detail-content {
+  color: #666;
+}
+
+.description,
+.house-rules,
+.address {
+  font-size: 1.2em;
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+/* Price details in details.html */
+.price-details {
+  display: flex;
+  gap: 20px;
+}
+
+/* Error and loading messages in details.html */
+#error-container,
+#loading-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#error-container {
+  color: red;
+}
+
+/* ========================= */
+/* Shared Styles (Both Pages) */
+/* ========================= */
+
+/* Shared buttons */
+button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Image gallery (both pages) */
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.image-gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  border: 1px solid #ddd;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Icons */
+.house-icon,
+.bed-icon,
+.guest-icon {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listing Details</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loading-container">
+      <p>Loading listing details...</p>
+    </div>
+    <div id="error-container" style="display: none"></div>
+    <div id="listingDetails" class="listing-detail" style="display: none"></div>
+    <div
+      id="image-gallery-container"
+      class="image-gallery"
+      style="display: none"
+    ></div>
+    <button onclick="window.location.href='index.html'">
+      Back to Listings
+    </button>
+    <script type="module" src="details.js"></script>
+  </body>
+</html>
