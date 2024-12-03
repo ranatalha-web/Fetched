@@ -19,7 +19,9 @@ async function fetchImages() {
       { id: "288675" },
       { id: "288676" },
       { id: "288677" },
+      { id: "288678" },
       { id: "288679" },
+      { id: "288681" },
       { id: "288682" },
       { id: "288683" },
       { id: "288684" },
@@ -27,6 +29,7 @@ async function fetchImages() {
       { id: "288686" },
       { id: "288687" },
       { id: "288688" },
+      { id: "288689" },
       { id: "288690" },
       { id: "288691" },
       { id: "288723" },
@@ -115,6 +118,15 @@ function openBookingModal(imageId) {
 
   // Show the modal
   modal.show();
+
+  // Initialize flatpickr for date fields only when modal is opened
+  flatpickr(checkinInput, {
+    dateFormat: "Y-m-d", // You can customize the format
+  });
+
+  flatpickr(checkoutInput, {
+    dateFormat: "Y-m-d",
+  });
 
   // Handle the Confirm Booking button
   const confirmBookingButton = document.querySelector(".btn-dark");
