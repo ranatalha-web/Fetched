@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Rooms</title>
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Font Awesome for icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <!-- Wow.js CSS (for animation) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- Flatpickr CSS (for date picker) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
   <style>
     /* Custom Styles */
     .light-background {
@@ -26,7 +31,8 @@
 
     .room-item img {
       width: 100%;
-      height: auto;
+      height: 300px; /* Fixed height */
+      object-fit: cover; /* Ensures the image covers the container without distortion */
     }
 
     .room-item .fa {
@@ -40,8 +46,16 @@
     .room-item .btn-md {
       font-size: 14px;
     }
+
+    /* Responsive room images */
+    @media (max-width: 768px) {
+      .room-item img {
+        height: 200px; /* Adjust image height for smaller screens */
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <!-- Listings Section -->
@@ -55,118 +69,151 @@
           Explore Our <span class="text-uppercase" style="color: #989549;">Rooms</span>
         </h1>
       </div>
-      <div class="row g-4">
-        <!-- Room 1 -->
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="room-item shadow rounded overflow-hidden">
-            <div class="position-relative">
-              <img class="img-fluid" src="assets/img/room-1.jpg" alt="Room 1">
-              <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #989549;">$100/Night</small>
-            </div>
-            <div class="p-4 mt-2">
-              <div class="d-flex justify-content-between mb-3">
-                <h5 class="mb-0">Junior Suite</h5>
-                <div class="ps-2" style="color: #989549;">
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                </div>
-              </div>
-              <div class="d-flex mb-3">
-                <small class="border-end me-3 pe-3"><i class="fa fa-bed me-2" style="color: #989549;"></i>3 Bed</small>
-                <small class="border-end me-3 pe-3"><i class="fa fa-bath me-2" style="color: #989549;"></i>2 Bath</small>
-                <small><i class="fa fa-wifi me-2" style="color: #989549;"></i>Wifi</small>
-              </div>
-              <p class="text-body mb-3">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.
-              </p>
-              <div class="d-flex justify-content-between">
-                <a class="btn btn-md rounded py-2 px-4" href="" style="background-color: #989549;">View Detail</a>
-                <a class="btn btn-md btn-dark rounded py-2 px-4" href="">Book Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Room 2 -->
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div class="room-item shadow rounded overflow-hidden">
-            <div class="position-relative">
-              <img class="img-fluid" src="assets/img/room-2.jpg" alt="Room 2">
-              <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #989549;">$120/Night</small>
-            </div>
-            <div class="p-4 mt-2">
-              <div class="d-flex justify-content-between mb-3">
-                <h5 class="mb-0">Deluxe Suite</h5>
-                <div class="ps-2" style="color: #989549;">
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                </div>
-              </div>
-              <div class="d-flex mb-3">
-                <small class="border-end me-3 pe-3"><i class="fa fa-bed me-2" style="color: #989549;"></i>2 Bed</small>
-                <small class="border-end me-3 pe-3"><i class="fa fa-bath me-2" style="color: #989549;"></i>2 Bath</small>
-                <small><i class="fa fa-wifi me-2" style="color: #989549;"></i>Wifi</small>
-              </div>
-              <p class="text-body mb-3">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.
-              </p>
-              <div class="d-flex justify-content-between">
-                <a class="btn btn-md rounded py-2 px-4" href="" style="background-color: #989549;">View Detail</a>
-                <a class="btn btn-md btn-dark rounded py-2 px-4" href="">Book Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Room 3 -->
-        <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-          <div class="room-item shadow rounded overflow-hidden">
-            <div class="position-relative">
-              <img class="img-fluid" src="assets/img/room-3.jpg" alt="Room 3">
-              <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #989549;">$150/Night</small>
-            </div>
-            <div class="p-4 mt-2">
-              <div class="d-flex justify-content-between mb-3">
-                <h5 class="mb-0">Presidential Suite</h5>
-                <div class="ps-2" style="color: #989549;">
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                  <small class="fa fa-star "></small>
-                </div>
-              </div>
-              <div class="d-flex mb-3">
-                <small class="border-end me-3 pe-3"><i class="fa fa-bed me-2" style="color: #989549;"></i>5 Bed</small>
-                <small class="border-end me-3 pe-3"><i class="fa fa-bath me-2" style="color: #989549;"></i>3 Bath</small>
-                <small><i class="fa fa-wifi me-2" style="color: #989549;"></i>Wifi</small>
-              </div>
-              <p class="text-body mb-3">
-                Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.
-              </p>
-              <div class="d-flex justify-content-between">
-                <a class="btn btn-md rounded py-2 px-4" href="" style="background-color: #989549;">View Detail</a>
-                <a class="btn btn-md btn-dark rounded py-2 px-4" href="">Book Now</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <div class="row g-4" id="room-list">
+        <!-- Room items will be inserted dynamically here -->
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap and JavaScript Libraries -->
+  <!-- Modal for Booking Details -->
+  <div class="modal fade" id="calendar-popup" tabindex="-1" aria-labelledby="calendar-popupLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="calendar-popupLabel">Booking Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="checkin" class="form-label">Check-in Date</label>
+            <input type="text" class="form-control" id="checkin" placeholder="Select check-in date">
+          </div>
+          <div class="mb-3">
+            <label for="checkout" class="form-label">Check-out Date</label>
+            <input type="text" class="form-control" id="checkout" placeholder="Select check-out date">
+          </div>
+          <div class="mb-3">
+            <label for="guests" class="form-label">Number of Guests</label>
+            <input type="number" class="form-control" id="guests" value="1" min="1">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-dark" id="confirm-booking">Confirm Booking</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle with Popper (for modal and other features) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Wow.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow.js/1.1.2/wow.min.js"></script>
-  <script>
-    new WOW().init();
+
+  <!-- Flatpickr JS (for date picker) -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+  <script type="module">
+    import { idToImageUrlMap } from "./data.js";  // Adjust the path as necessary
+
+    // Images array with IDs
+    const images = [
+      { id: "288678" },
+      { id: "288723" },
+      { id: "288726" },
+    ];
+
+    // Function to create room elements dynamically
+    const roomList = document.getElementById("room-list");
+
+    images.forEach((image, index) => {
+      const imageUrl = idToImageUrlMap[image.id] || 'https://via.placeholder.com/300'; // Fallback if no image found
+
+      // Create the HTML structure for each room item dynamically
+      const roomItem = document.createElement("div");
+      roomItem.classList.add("col-lg-4", "col-md-6", "wow", "fadeInUp");
+      roomItem.setAttribute("data-wow-delay", `${0.1 * (index + 1)}s`);
+
+      roomItem.innerHTML = `
+        <div class="room-item shadow rounded overflow-hidden">
+          <div class="position-relative">
+            <img class="img-fluid" src="${imageUrl}" alt="Room Image ${image.id}" />
+            <small class="position-absolute start-0 top-100 translate-middle-y text-white rounded py-1 px-3 ms-4" style="background-color: #989549;">
+              $100/Night
+            </small>
+          </div>
+          <div class="p-4 mt-2">
+            <div class="d-flex justify-content-between mb-3">
+              <h5 class="mb-0" id="listing-name">Loading...</h5>
+              <div class="ps-2" style="color: #989549;">
+                <small class="fa fa-star "></small>
+                <small class="fa fa-star "></small>
+                <small class="fa fa-star "></small>
+                <small class="fa fa-star "></small>
+                <small class="fa fa-star "></small>
+              </div>
+            </div>
+            <div class="d-flex mb-3">
+              <small class="border-end me-3 pe-3"><i class="fa fa-bed me-2" style="color: #989549;"></i>3 Bed</small>
+              <small class="border-end me-3 pe-3"><i class="fa fa-bath me-2" style="color: #989549;"></i>2 Bath</small>
+              <small><i class="fa fa-wifi me-2" style="color: #989549;"></i>Wifi</small>
+            </div>
+            <p class="text-body mb-3">
+              Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.
+            </p>
+            <div class="d-flex justify-content-between">
+             <a href="details.html?id=${image.id}" class="btn btn-md rounded py-2 px-4" style="background-color: #989549;">View Detail</a>
+            <a class="btn btn-md btn-dark rounded py-2 px-4 book-now-btn" href="#">Book Now</a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      roomList.appendChild(roomItem);
+    });
+
+    // Function to open the booking modal when "Book Now" is clicked
+    function openBookingModal() {
+      const modal = new bootstrap.Modal(document.getElementById("calendar-popup"));
+      const checkinInput = document.getElementById("checkin");
+      const checkoutInput = document.getElementById("checkout");
+      const guestsInput = document.getElementById("guests");
+
+      // Initialize flatpickr for check-in and check-out date fields
+      flatpickr(checkinInput, {
+        dateFormat: "Y-m-d",
+      });
+
+      flatpickr(checkoutInput, {
+        dateFormat: "Y-m-d",
+      });
+
+      // Show the modal
+      modal.show();
+
+      // Handle the Confirm Booking button
+      const confirmBookingButton = document.getElementById("confirm-booking");
+      confirmBookingButton.onclick = () => {
+        const checkin = checkinInput.value;
+        const checkout = checkoutInput.value;
+        const guests = guestsInput.value;
+
+        if (!checkin || !checkout || !guests) {
+          alert("Please fill in all the fields.");
+          return;
+        }
+
+        // Process the booking (e.g., send data to a server or redirect)
+        alert(`Booking confirmed!\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nGuests: ${guests}`);
+        modal.hide(); // Hide modal after booking
+      };
+    }
+
+    // Event listener for all "Book Now" buttons
+    const bookNowButtons = document.querySelectorAll('.book-now-btn');
+    bookNowButtons.forEach(button => {
+      button.addEventListener('click', openBookingModal);
+    });
   </script>
-</body
+
+</body>
+
+</html>

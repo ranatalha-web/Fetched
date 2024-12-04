@@ -11,19 +11,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Loading and Error Containers (Initially Hidden) -->
     <div id="loading-container">
       <p>Loading listing details...</p>
     </div>
-    <div id="error-container" style="display: none"></div>
-    <div id="listingDetails" class="listing-detail" style="display: none"></div>
+    <div id="error-container" style="display: none;"></div>
+    <div id="listingDetails" class="listing-detail" style="display: none;"></div>
     <div
       id="image-gallery-container"
       class="image-gallery"
       style="display: none"
     ></div>
-    <button onclick="window.location.href='index.html'">
-      Back to Listings
-    </button>
+
+    <!-- Button to go back to index.html -->
+    <button onclick="window.location.href='index.html'">Back to Listings (Index)</button>
+
+    <!-- Button to go back to room.html -->
+    <button onclick="window.location.href='room.html'">Back to Room (Room)</button>
+
+    <!-- Include the details.js script -->
     <script type="module" src="details.js"></script>
   </body>
 </html>

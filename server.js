@@ -45,6 +45,9 @@ class HostawayListingManager {
     this.app.get("/details.html", (req, res) => {
       res.sendFile(path.join(__dirname, "public", "details.html"));
     });
+    this.app.get("/details.html", (req, res) => {
+        res.sendFile(path.join(__dirname, "public", "Results.html"));
+      });
   }
 
   async fetchData(type = "images") {
