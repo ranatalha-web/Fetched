@@ -114,14 +114,19 @@
   <script type="module">
     import { idToImageUrlMap } from "./data.js";  // Adjust the path as necessary
 
-    // USD to PKR conversion rate
-    const usdToPkrRate = 278.49;
+    let usdToPkrRate = 1;
 
-    // Price in USD
-    const usdPrice = 54;  
-
-    // Convert USD to PKR
-    const priceInPkr = usdPrice * usdToPkrRate;
+    // Function to fetch conversion rate
+    async function fetchConversionRate() {
+      try {
+        const response = await fetch("https://v6.exchangerate-api.com/v6/dd469c4556431d9b5576d5f2/latest/USD");
+        const data = await response.json();
+        usdToPkrRate = data.conversion_rates.PKR; // Update global variable with real-time conversion rate
+      } catch (error) {
+        console.error("Failed to fetch USD to PKR rate:", error);
+        usdToPkrRate = 277.66; // Fallback rate
+      }
+    }
 
     // Fetch the listings data (including name and price)
     const getListingData = async () => {
@@ -145,7 +150,11 @@
     // Function to create room elements dynamically
     const roomList = document.getElementById("room-list");
 
+    // Make loadRooms() an async function to allow use of await
     const loadRooms = async () => {
+      // Fetch the real-time conversion rate before loading the rooms
+      await fetchConversionRate();
+
       const listings = await getListingData();
 
       images.forEach((image, index) => {
@@ -153,8 +162,8 @@
         const imageUrl = idToImageUrlMap[image.id] || 'https://via.placeholder.com/300'; // Fallback if no image found
 
         // Calculate the price in PKR dynamically
-        const priceInPkrDynamic = listing ? listing.price * usdToPkrRate : priceInPkr; // Default to a fallback price if no listing
-        const priceText = `${usdPrice} OR ₨${priceInPkrDynamic.toLocaleString()} `;  // Display both prices
+        const priceInPkrDynamic = listing ? listing.price * usdToPkrRate : 0;
+        const priceText = `$${listing.price} OR ₨${priceInPkrDynamic.toFixed(2).toLocaleString()}`;
 
         // Create the HTML structure for each room item dynamically
         const roomItem = document.createElement("div");
@@ -203,50 +212,48 @@
     loadRooms();
 
     // Function to open the booking modal
-function openBookingModal() {
-  const modal = new bootstrap.Modal(document.getElementById("calendar-popup"));
-  const checkinInput = document.getElementById("checkin");
-  const checkoutInput = document.getElementById("checkout");
-  const guestsInput = document.getElementById("guests");
+    function openBookingModal() {
+      const modal = new bootstrap.Modal(document.getElementById("calendar-popup"));
+      const checkinInput = document.getElementById("checkin");
+      const checkoutInput = document.getElementById("checkout");
+      const guestsInput = document.getElementById("guests");
 
-  // Initialize flatpickr for check-in and check-out date fields
-  flatpickr(checkinInput, {
-    dateFormat: "Y-m-d",
-  });
+      // Initialize flatpickr for check-in and check-out date fields
+      flatpickr(checkinInput, {
+        dateFormat: "Y-m-d",
+      });
 
-  flatpickr(checkoutInput, {
-    dateFormat: "Y-m-d",
-  });
+      flatpickr(checkoutInput, {
+        dateFormat: "Y-m-d",
+      });
 
-  // Show the modal
-  modal.show();
+      // Show the modal
+      modal.show();
 
-  // Handle the Confirm Booking button
-  const confirmBookingButton = document.getElementById("confirm-booking");
-  confirmBookingButton.onclick = () => {
-    const checkin = checkinInput.value;
-    const checkout = checkoutInput.value;
-    const guests = guestsInput.value;
+      // Handle the Confirm Booking button
+      const confirmBookingButton = document.getElementById("confirm-booking");
+      confirmBookingButton.onclick = () => {
+        const checkin = checkinInput.value;
+        const checkout = checkoutInput.value;
+        const guests = guestsInput.value;
 
-    if (!checkin || !checkout || !guests) {
-      alert("Please fill in all the fields.");
-      return;
+        if (!checkin || !checkout || !guests) {
+          alert("Please fill in all the fields.");
+          return;
+        }
+
+        // Process the booking (e.g., send data to a server or redirect)
+        alert(`Booking confirmed!\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nGuests: ${guests}`);
+        modal.hide(); // Hide modal after booking
+      };
     }
 
-    // Process the booking (e.g., send data to a server or redirect)
-    alert(`Booking confirmed!\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nGuests: ${guests}`);
-    modal.hide(); // Hide modal after booking
-  };
-}
-
-// Event delegation for "Book Now" buttons
-
-roomList.addEventListener("click", function(event) {
-  if (event.target && event.target.classList.contains("book-now-btn")) {
-    openBookingModal();
-  }
-});
-
+    // Event delegation for "Book Now" buttons
+    roomList.addEventListener("click", function(event) {
+      if (event.target && event.target.classList.contains("book-now-btn")) {
+        openBookingModal();
+      }
+    });
   </script>
 
 </body>
