@@ -202,48 +202,51 @@
 
     loadRooms();
 
-    // Function to open the booking modal when "Book Now" is clicked
-    function openBookingModal() {
-      const modal = new bootstrap.Modal(document.getElementById("calendar-popup"));
-      const checkinInput = document.getElementById("checkin");
-      const checkoutInput = document.getElementById("checkout");
-      const guestsInput = document.getElementById("guests");
+    // Function to open the booking modal
+function openBookingModal() {
+  const modal = new bootstrap.Modal(document.getElementById("calendar-popup"));
+  const checkinInput = document.getElementById("checkin");
+  const checkoutInput = document.getElementById("checkout");
+  const guestsInput = document.getElementById("guests");
 
-      // Initialize flatpickr for check-in and check-out date fields
-      flatpickr(checkinInput, {
-        dateFormat: "Y-m-d",
-      });
+  // Initialize flatpickr for check-in and check-out date fields
+  flatpickr(checkinInput, {
+    dateFormat: "Y-m-d",
+  });
 
-      flatpickr(checkoutInput, {
-        dateFormat: "Y-m-d",
-      });
+  flatpickr(checkoutInput, {
+    dateFormat: "Y-m-d",
+  });
 
-      // Show the modal
-      modal.show();
+  // Show the modal
+  modal.show();
 
-      // Handle the Confirm Booking button
-      const confirmBookingButton = document.getElementById("confirm-booking");
-      confirmBookingButton.onclick = () => {
-        const checkin = checkinInput.value;
-        const checkout = checkoutInput.value;
-        const guests = guestsInput.value;
+  // Handle the Confirm Booking button
+  const confirmBookingButton = document.getElementById("confirm-booking");
+  confirmBookingButton.onclick = () => {
+    const checkin = checkinInput.value;
+    const checkout = checkoutInput.value;
+    const guests = guestsInput.value;
 
-        if (!checkin || !checkout || !guests) {
-          alert("Please fill in all the fields.");
-          return;
-        }
-
-        // Process the booking (e.g., send data to a server or redirect)
-        alert(`Booking confirmed!\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nGuests: ${guests}`);
-        modal.hide(); // Hide modal after booking
-      };
+    if (!checkin || !checkout || !guests) {
+      alert("Please fill in all the fields.");
+      return;
     }
 
-    // Event listener for all "Book Now" buttons
-    const bookNowButtons = document.querySelectorAll('.book-now-btn');
-    bookNowButtons.forEach(button => {
-      button.addEventListener('click', openBookingModal);
-    });
+    // Process the booking (e.g., send data to a server or redirect)
+    alert(`Booking confirmed!\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nGuests: ${guests}`);
+    modal.hide(); // Hide modal after booking
+  };
+}
+
+// Event delegation for "Book Now" buttons
+
+roomList.addEventListener("click", function(event) {
+  if (event.target && event.target.classList.contains("book-now-btn")) {
+    openBookingModal();
+  }
+});
+
   </script>
 
 </body>
