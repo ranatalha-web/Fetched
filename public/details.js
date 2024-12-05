@@ -7,9 +7,23 @@ async function fetchListingDetails() {
   const loadingContainer = document.getElementById("loading-container");
   const errorContainer = document.getElementById("error-container");
   const listingDetailsContainer = document.getElementById("listingDetails");
-  const imageGalleryContainer = document.getElementById(
-    "image-gallery-container"
-  );
+  const imageGalleryContainer = document.getElementById("image-gallery-container");
+
+  let usdToPkrRate = 1;
+
+  // Function to fetch conversion rate
+  async function fetchConversionRate() {
+    try {
+      const response = await fetch(
+        "https://v6.exchangerate-api.com/v6/dd469c4556431d9b5576d5f2/latest/USD"
+      );
+      const data = await response.json();
+      usdToPkrRate = data.conversion_rates.PKR; // Update global variable with real-time conversion rate
+    } catch (error) {
+      console.error("Failed to fetch USD to PKR rate:", error);
+      usdToPkrRate = 277.66; // Fallback rate
+    }
+  }
 
   // Reset display states
   loadingContainer.style.display = "block";
@@ -23,6 +37,9 @@ async function fetchListingDetails() {
   }
 
   try {
+    // Fetch conversion rate before proceeding
+    await fetchConversionRate();
+
     const response = await fetch(`/api/listings/${listingId}`);
 
     if (!response.ok) {
@@ -35,7 +52,7 @@ async function fetchListingDetails() {
     let pricePKR = "Not Available";
 
     if (listing.price) {
-      let priceInUSD = 0;
+      let priceInUSD = 1;
 
       if (typeof listing.price === "string") {
         priceInUSD = parseFloat(listing.price.replace(/[^\d.-]/g, ""));
@@ -45,7 +62,7 @@ async function fetchListingDetails() {
 
       if (!isNaN(priceInUSD)) {
         priceUSD = `$${priceInUSD}`;
-        pricePKR = (priceInUSD * 278.49).toFixed(2).toLocaleString();
+        pricePKR = (priceInUSD * usdToPkrRate).toFixed(2).toLocaleString();
       }
     }
 
@@ -53,29 +70,28 @@ async function fetchListingDetails() {
     const numberOfGuests = listing.guests || "Not Available";
 
     listingDetailsContainer.innerHTML = `
-            <div class="listing-content">
-              <img src="${
-                idToImageUrlMap[listingId] || "https://via.placeholder.com/250"
-              }" 
-                   class="listing-image" alt="Listing Image" />
-              <h2>${listing.name || "N/A"}</h2>
-              <div class="icons">
-                <span><i class="fa-solid fa-house house-icon"></i> Home</span>
-                <span><i class="fa-solid fa-bed bed-icon"></i> ${numberOfBeds} Beds</span>
-                <span><i class="fa-solid fa-user guest-icon"></i> ${numberOfGuests} Guests</span>
-              </div>
-              <p><span class="detail-label">Description:</span> <span class="detail-content description">${
-                listing.description || "No description available"
-              }</span></p>
-              <p><span class="detail-label">House Rules:</span> <span class="detail-content house-rules">${
-                listing.houseRules || "No specific house rules"
-              }</span></p>
-              <p><span class="detail-label">Address:</span> <span class="detail-content address">${
-                listing.address || "Address not provided"
-              }</span></p>
-              <p><span class="detail-label">Price:</span> <span class="detail-content">USD: ${priceUSD} Or PKR: ${pricePKR}</span></p>
-            </div>
-          `;
+      <div class="listing-content">
+        <img src="${
+          idToImageUrlMap[listingId] || "https://via.placeholder.com/250"
+        }" class="listing-image" alt="Listing Image" />
+        <h2>${listing.name || "N/A"}</h2>
+        <div class="icons">
+          <span><i class="fa-solid fa-house house-icon"></i> Home</span>
+          <span><i class="fa-solid fa-bed bed-icon"></i> ${numberOfBeds} Beds</span>
+          <span><i class="fa-solid fa-user guest-icon"></i> ${numberOfGuests} Guests</span>
+        </div>
+        <p><span class="detail-label">Description:</span> <span class="detail-content description">${
+          listing.description || "No description available"
+        }</span></p>
+        <p><span class="detail-label">House Rules:</span> <span class="detail-content house-rules">${
+          listing.houseRules || "No specific house rules"
+        }</span></p>
+        <p><span class="detail-label">Address:</span> <span class="detail-content address">${
+          listing.address || "Address not provided"
+        }</span></p>
+        <p><span class="detail-label">Price:</span> <span class="detail-content">USD: ${priceUSD} Or PKR: ${pricePKR}</span></p>
+      </div>
+    `;
 
     if (listing.images && listing.images.length > 0) {
       listing.images.forEach((image) => {
